@@ -119,3 +119,43 @@ If a designer gives me a 5 MB PNG image for a hero section, the first thing I wo
 The srcset attribute allows the browser to choose the most appropriate image size for a user's device. Instead of sending the same image to everyone, the browser can pick a smaller image for mobile users and a larger image for desktop users.
 
 For example, imagine an online store with product images. If a mobile user only needs a small image, downloading a large desktop image would waste data and slow down the page. With srcset, the browser can automatically choose a smaller version. This improves loading speed, saves bandwidth, and creates a better experience for users on slower internet connections or mobile devices.
+
+#### 3. Why rel="noopener" Matters
+
+When using target="\_blank", a new browser tab is opened. Without rel="noopener", the newly opened page can sometimes access information about the page that opened it.
+
+In simple terms, imagine giving a stranger access to the controls of your car while you are still driving it. That is not something you would want to happen.
+
+Adding rel="noopener" prevents the new page from being able to control or interact with the original page. This improves security and helps protect users from certain types of attacks.
+
+### Engineering Thinking
+
+#### 1. Strategy for Displaying 50 Product Images
+
+If I need to display 50 product images on a page, I would focus on performance and user experience.
+
+First, I would use modern image formats like WebP to reduce file sizes. Next, I would use lazy loading so images only load when users scroll close to them. This prevents the browser from downloading all 50 images immediately.
+
+I would also use responsive image sizes so mobile users do not download large desktop images. Using a CDN would help deliver images from servers closer to users, improving loading speed.
+
+Finally, I would compress all images before uploading them. Combining these techniques would help the page load faster and feel more responsive for users.
+
+#### 3. Why rel="noopener" Matters
+
+When using target="\_blank", a new browser tab is opened. Without rel="noopener", the newly opened page can sometimes access information about the page that opened it.
+
+In simple terms, imagine giving a stranger access to the controls of your car while you are still driving it. That is not something you would want to happen.
+
+Adding rel="noopener" prevents the new page from being able to control or interact with the original page. This improves security and helps protect users from certain types of attacks.
+
+### Engineering Thinking
+
+#### 1. Strategy for Displaying 50 Product Images
+
+If I need to display 50 product images on a page, I would focus on performance and user experience.
+
+First, I would use modern image formats like WebP to reduce file sizes. Next, I would use lazy loading so images only load when users scroll close to them. This prevents the browser from downloading all 50 images immediately.
+
+I would also use responsive image sizes so mobile users do not download large desktop images. Using a CDN would help deliver images from servers closer to users, improving loading speed.
+
+Finally, I would compress all images before uploading them. Combining these techniques would help the page load faster and feel more responsive for users.
