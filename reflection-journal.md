@@ -99,3 +99,23 @@ If I were designing documentation for an API
 - The h1 heading would contain the name of the API and a short overview.
 - The h2 headings will be used for different sections such as Authentication, Endpoints, Error Handling etc.
 - h3 headings could be used under each section for specific topics. For example, under Endpoints there could be headings such as Get Users, Create User, Update User, and Delete User.
+
+---
+
+## Class 03 - Modern Assets & Linking
+
+### Theory
+
+#### 1. Optimizing a 5 MB PNG Hero Image
+
+If a designer gives me a 5 MB PNG image for a hero section, the first thing I would do is check if PNG is really necessary. If the image is a normal photograph
+
+- I would convert it to a modern format like WebP or AVIF because these formats usually provide much smaller file sizes while keeping good quality.
+- Next, I would resize the image to the maximum size needed on the website. There is no reason to upload a huge image if users will only see it in a smaller space.
+- After resizing, I would compress the image using tools such as TinyPNG.
+
+#### 2. Understanding srcset
+
+The srcset attribute allows the browser to choose the most appropriate image size for a user's device. Instead of sending the same image to everyone, the browser can pick a smaller image for mobile users and a larger image for desktop users.
+
+For example, imagine an online store with product images. If a mobile user only needs a small image, downloading a large desktop image would waste data and slow down the page. With srcset, the browser can automatically choose a smaller version. This improves loading speed, saves bandwidth, and creates a better experience for users on slower internet connections or mobile devices.
