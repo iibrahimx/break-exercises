@@ -79,3 +79,23 @@ Browsers treat these elements specially because they provide important informati
 ARIA labels are useful when an element needs a description that is not visible on the screen. For example, if a navigation menu only shows a hamburger icon, I can use an aria-label like "Open navigation menu" so screen reader users know its purpose.
 
 However, ARIA should not be used to replace proper HTML structure. If a div is used as a button, adding an aria-label does not make it as good as using a real button element. In that situation, the better solution is to fix the HTML and use the correct semantic element.
+
+### Accessibility Reflection
+
+#### 1. Accessibility Audit
+
+I tested the my color space homepage using keyboard navigation. I was able to move around the page using the Tab key and clearly see which element was currently selected.
+
+The buttons on the page were also accessible through keyboard navigation and when I pressed enter on them they were successfully clicked and the the saem thing had it been clicked with a mouse. The page structure felt really simple and organized.
+
+A major thing observed also was that the website places a strong focus on keyboard accessibility. Users can navigate important parts of the page without needing a mouse that much. Overall, the accessibility experience was good and showed how proper HTML and accessibility practices can improve usability.
+
+### Product Thinking
+
+#### 1. API Documentation Hierarchy
+
+If I were designing documentation for an API
+
+- The h1 heading would contain the name of the API and a short overview.
+- The h2 headings will be used for different sections such as Authentication, Endpoints, Error Handling etc.
+- h3 headings could be used under each section for specific topics. For example, under Endpoints there could be headings such as Get Users, Create User, Update User, and Delete User.
