@@ -49,3 +49,33 @@ Accessibility is one reason why semantic elements are important. Screen readers 
 Semantic HTML also helps with SEO because search engines can better understand the content and structure of a page. From a maintenance perspective, semantic elements make code easier to read. If another developer joins the project, they can quickly understand the purpose of each section without reading many comments.
 
 For collaboration and long-term projects, semantic HTML creates cleaner and more organised code. Divs still have their place, but they should be used when no suitable semantic element exists rather than for every part of a website.
+
+---
+
+## Class 02 - Typography & Information Hierarchy
+
+### Theory
+
+#### 1. Difference Between em and i
+
+The <em> and <i> tags may look similar because browsers often display both in italics, but they have different meanings. The em tag is used when a word or phrase needs emphasis. It tells both users and assistive technologies that the content is important and should be stressed. The i tag on the other hand is mainly used for text that is different from the surrounding content without adding importance.
+
+For example, if I write "I need to finish this assignment today," I could use em on the word "need" to show emphasis. If I am mentioning a foreign word like "ekaro," I could use the i tag because it is a word from another language.
+
+Understanding the difference helps create more meaningful and accessible content.
+
+#### 2. HTML Elements With Special Screen Reader Behaviour
+
+- Button element: Screen readers immediately recognize it as a button that can be clicked or activated.
+
+- Heading elements such as h1, h2, and h3: Screen readers use headings to help users move around a page and understand the content structure.
+
+- Input element used in forms: Screen readers identify it as a field where users can enter information.
+
+Browsers treat these elements specially because they provide important information about the purpose of the content. This helps users who rely on assistive technologies navigate websites more easily.
+
+#### 3. ARIA Labels vs Semantic HTML
+
+ARIA labels are useful when an element needs a description that is not visible on the screen. For example, if a navigation menu only shows a hamburger icon, I can use an aria-label like "Open navigation menu" so screen reader users know its purpose.
+
+However, ARIA should not be used to replace proper HTML structure. If a div is used as a button, adding an aria-label does not make it as good as using a real button element. In that situation, the better solution is to fix the HTML and use the correct semantic element.
