@@ -6,7 +6,6 @@
 
 #### 1. Browser Rendering Process
 
-As depicted in the image below, when a user visits a website, the browser first downloads the HTML document from the server. It then reads the HTML and creates something called the DOM Tree (Document Object Model), which is basically a structured representation of all the elements on the page. After that, the browser downloads and processes the CSS files to understand how each element should look. The browser then combines the DOM Tree and the CSS information to create the Render Tree. This Render Tree contains only the elements that need to be displayed on the screen. Next comes the Layout stage, where the browser calculates the size and position of every visible element. After that Once the layout is complete, the browser moves to the Paint stage, where it draws the actual pixels that appear on the screen.
 ![How the browser works](./images/how-browser-works.jpeg)
 
 Understanding this process is important because it helps developers build faster and more efficient websites. And to also improve the overall user experience. It also helps when debugging layout and performance issues.
@@ -29,13 +28,9 @@ If I were building a blog for a famous chef who wants more traffic, I would make
 
 The main content of each recipe or article would be placed inside an article element. The page title and important information would be placed inside a header element. The primary content area would be wrapped in a main element, while related content such as popular recipes or cooking tips could be placed inside an aside element.
 
-This structure helps search engines understand what content is most important on the page. As a result, recipes and blog posts have a better chance of appearing in search results. It also improves accessibility for users who rely on assistive technologies, creating a better overall experience.
-
 #### 2. Edge Computing for Multiplayer Games
 
-If I were designing a real-time multiplayer game, one of the biggest benefits of edge computing would be lower latency. Players expect their actions to appear instantly on the screen, especially in competitive games.
-
-By processing information closer to where players are located, edge computing can reduce the time it takes for data to travel between players and servers. This leads to faster responses and smoother gameplay.
+If I were designing a real-time multiplayer game, one of the biggest benefits of edge computing would be lower latency since players expect their actions to appear instantly on the screen, especially in competitive games. By then processing information closer to where players are located, edge computing can reduce the time it takes for data to travel between players and servers. This leads to faster responses and smoother gameplay.
 
 Another benefit would be improved reliability. If servers are distributed across multiple locations, players can connect to the nearest one instead of relying on a single distant server. This can help reduce lag and provide a better gaming experience for users around the world.
 
@@ -47,9 +42,7 @@ I do not completely agree with using divs for everything. While a div can be use
 
 Accessibility is one reason why semantic elements are important. Screen readers use semantic tags to understand different sections of a page. A main element clearly identifies the primary content area, while a nav element identifies navigation links. When everything is a div, assistive technologies lose that extra information.
 
-Semantic HTML also helps with SEO because search engines can better understand the content and structure of a page. From a maintenance perspective, semantic elements make code easier to read. If another developer joins the project, they can quickly understand the purpose of each section without reading many comments.
-
-For collaboration and long-term projects, semantic HTML creates cleaner and more organised code. Divs still have their place, but they should be used when no suitable semantic element exists rather than for every part of a website.
+Semantic HTML also helps with SEO because search engines can better understand the content and structure of a page. From a maintenance perspective, semantic elements make code easier to read also because for collaboration and long-term projects, semantic HTML creates cleaner and more organised code. Divs still have their place, but they should be used when no suitable semantic element exists rather than for every part of a website.
 
 ---
 
@@ -537,3 +530,29 @@ Using Tailwind, and knowing it defaults to a mobile first approach, my breakpoin
 - `sm:` mobile (large phones) < 640px from 640px and up
 - `md:` tablets from 768px and up
 - `lg:` desktop from 1024px and up
+
+---
+
+## Class 10 - Memory & Variables
+
+### Theory
+
+#### 1. Difference Between let, const, and var
+
+- `var` is function-scoped and can be reassigned.
+- `let` is block-scoped and can also be reassigned. I use it when I know a value may change later.
+- `const` is also block-scoped, but it cannot be reassigned after it has been declared. I use it for values that should stay the same.
+
+One thing that confused me at first was that `const` does not completely lock objects and arrays. On further study I got to understand that it does not prevent mutation because it secures the variable's assignment, not the value's content. Simply put, it only prevents the variable itself from being reassigned, the contents of the object or array however can still be changed.
+
+#### 2. What is the Temporal Dead Zone (TDZ)?
+
+The Temporal Dead Zone is the period between when a variable is created and when it is initialized.
+
+I think TDZ is useful because it helps catch mistakes early and prevents bugs caused by accidentally using variables before they are ready like in the example below, will produce an error because `name` is inside the Temporal Dead Zone..
+
+```js
+console.log(name);
+
+let name = "Ibrahim";
+```
