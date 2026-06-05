@@ -214,3 +214,19 @@ The cascade is the process the browser uses to decide which CSS rule should be a
 For example, if I have two rules styling the same button, the browser checks things like specificity and the order of the rules.
 
 Understanding the cascade helps me avoid writing extra CSS when a simple change would solve the problem.
+
+### Engineering Thinking
+
+#### 1. Padding Makes an Element Wider
+
+This usually happens because the default box model adds padding to the element's width. For example, if an element has a width of 200px and I add 10px padding on both sides, the total width becomes larger than 200px.
+
+A common fix is using: `box-sizing: border-box`. This makes the padding stay inside the specified width.
+
+#### 2. Content-Box vs Border-Box
+
+Content-box is the default box model where padding and borders increase the final size of an element.
+
+Border-box includes the padding and border inside the width and height that you set.
+
+I prefer border-box because it makes layouts easier to manage and more predictable.
