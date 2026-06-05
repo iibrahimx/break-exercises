@@ -6,7 +6,8 @@
 
 #### 1. Browser Rendering Process
 
-When a user visits a website, the browser first downloads the HTML document from the server. It then reads the HTML and creates something called the DOM Tree (Document Object Model), which is basically a structured representation of all the elements on the page. After that, the browser downloads and processes the CSS files to understand how each element should look. The browser then combines the DOM Tree and the CSS information to create the Render Tree. This Render Tree contains only the elements that need to be displayed on the screen. Next comes the Layout stage, where the browser calculates the size and position of every visible element. After that Once the layout is complete, the browser moves to the Paint stage, where it draws the actual pixels that appear on the screen.
+As depicted in the image below, when a user visits a website, the browser first downloads the HTML document from the server. It then reads the HTML and creates something called the DOM Tree (Document Object Model), which is basically a structured representation of all the elements on the page. After that, the browser downloads and processes the CSS files to understand how each element should look. The browser then combines the DOM Tree and the CSS information to create the Render Tree. This Render Tree contains only the elements that need to be displayed on the screen. Next comes the Layout stage, where the browser calculates the size and position of every visible element. After that Once the layout is complete, the browser moves to the Paint stage, where it draws the actual pixels that appear on the screen.
+![How the browser works](./images/how-browser-works.jpeg)
 
 Understanding this process is important because it helps developers build faster and more efficient websites. And to also improve the overall user experience. It also helps when debugging layout and performance issues.
 
@@ -134,7 +135,7 @@ Adding rel="noopener" prevents the new page from being able to control or intera
 
 If I need to display 50 product images on a page, I would focus on performance and user experience.
 
-First, I would use modern image formats like WebP to reduce file sizes. Next, I would use lazy loading so images only load when users scroll close to them. This prevents the browser from downloading all 50 images immediately.
+- I would use modern image formats like WebP to reduce file sizes. Next, I would use lazy loading so images only load when users scroll close to them. This prevents the browser from downloading all 50 images immediately.
 
 I would also use responsive image sizes so mobile users do not download large desktop images. Using a CDN would help deliver images from servers closer to users, improving loading speed.
 
@@ -144,9 +145,7 @@ Finally, I would compress all images before uploading them. Combining these tech
 
 When using target="\_blank", a new browser tab is opened. Without rel="noopener", the newly opened page can sometimes access information about the page that opened it.
 
-In simple terms, imagine giving a stranger access to the controls of your car while you are still driving it. That is not something you would want to happen.
-
-Adding rel="noopener" prevents the new page from being able to control or interact with the original page. This improves security and helps protect users from certain types of attacks.
+In simple terms, it's almost like giving a stranger access to the controls of your car while you are still driving it. Adding rel="noopener" prevents the new page from being able to control or interact with the original page. This helps protect users from certain types of attacks.
 
 ### Engineering Thinking
 
@@ -154,8 +153,64 @@ Adding rel="noopener" prevents the new page from being able to control or intera
 
 If I need to display 50 product images on a page, I would focus on performance and user experience.
 
-First, I would use modern image formats like WebP to reduce file sizes. Next, I would use lazy loading so images only load when users scroll close to them. This prevents the browser from downloading all 50 images immediately.
+- I would use modern image formats like WebP to reduce file sizes.
+- I would use lazy loading so images only load when users scroll close to them. This prevents the browser from downloading all 50 images immediately.
+- I would also use responsive image sizes so mobile users do not download large desktop images.
 
-I would also use responsive image sizes so mobile users do not download large desktop images. Using a CDN would help deliver images from servers closer to users, improving loading speed.
+---
 
-Finally, I would compress all images before uploading them. Combining these techniques would help the page load faster and feel more responsive for users.
+## Class 05 - The CSS Engine: Box Model & Specificity
+
+### Theory
+
+#### 1. CSS Box Model
+
+![How the browser works](./images/border-box.jpeg)
+
+If one div has a margin-bottom of 20px and another div has a margin-top of 30px, the space between them will be 30px, not 50px. This happens because vertical margins collapse and the larger margin wins.
+
+#### 2. CSS Specificity
+
+Specificity is how the browser decides which CSS rule to apply when multiple rules target the same element.
+
+For the given selectors:
+
+```css
+.header nav ul li a
+nav a.active
+.nav-links a
+```
+
+Using the 4-column calculator:
+
+- Inline Styles = (1,0,0,0): Applied directly to the HTML element via the style attribute.
+- IDs = (0,1,0,0): (e.g., `#header`).
+- Classes, Attributes, and Pseudo-classes = (0,0,1,0): (e.g., `.nav`, `[type="text"]`, `:hover`, or `:active`).
+- Elements and Pseudo-elements = (0,0,0,1): (e.g., `div`, `nav`, `a`, `::before`)
+
+**Calculations**
+
+For `.header nav ul li a`
+Classes: 1 (.header)
+Elements: 4 (nav, ul, li, a) 1 each
+Score: (0, 0, 1, 4)
+
+For `nav a.active`
+Classes/Pseudo-classes: 1 (.active)
+Elements: 2 (nav, a)
+Score: (0, 0, 1, 2)
+
+For `.nav-links a`
+Classes: 1 (.nav-links)
+Elements: 1 (a)
+Score: (0, 0, 1, 1)
+
+`.header nav ul li a` because of the tie of all selectors for the first 3 columns, the fourth columns will be like a tie breaker and `.header nav ul li a` has 4 elements, which beats out the 2 elements of the second selector and the 1 element of the third.
+
+#### 3. What is the CSS Cascade?
+
+The cascade is the process the browser uses to decide which CSS rule should be applied.
+
+For example, if I have two rules styling the same button, the browser checks things like specificity and the order of the rules.
+
+Understanding the cascade helps me avoid writing extra CSS when a simple change would solve the problem.
