@@ -396,3 +396,31 @@ card3 and card6 span 2 rows 1 column
 I used `fr` units because they divide available space evenly and make the layout responsive.
 
 #### 2. Responsive Dashboard Layout
+
+---
+
+## Class 08 - Tailwind CSS Fundamentals
+
+### Theory
+
+#### 1. Utility-First Philosophy
+
+According to my understanding, instead of creating custom CSS classes for every component, Tailwind allows us to use small utility classes directly in the HTML making styling faster and more convinient.
+
+For example, instead of creating a class called `.button` and then proceeding to styling it by doing
+
+```css
+.button = {
+  `background-color: #000000`;
+  color: #ffffff;
+  padding: 12px 24px;
+}
+```
+
+One can simply use these tailwind utility classes to achieve the same results, inline and faster `bg-black` (or `bg-[#000000]`), `text-white` (or `bg-[#FFFFFF]`), and `p-4` respectively. I believe this approach helps developers build interfaces faster and keeps styling consistent across a project.
+
+#### 2. What is the JIT Compiler?
+
+JIT means Just-In-Time compiler.
+
+It generates only the CSS classes that are actually used in the project. This helps keep the final CSS file smaller. Without JIT, many unused styles might be included. With JIT, only the classes being used are generated and in turn reduces file size.
