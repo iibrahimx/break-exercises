@@ -283,3 +283,44 @@ To build the Instagram header, I would place all navigation items inside a Flexb
 On large screens, all menu items would be displayed in a row. On smaller screens, I would hide the menu items and show a hamburger menu instead.
 
 Flexbox would help keep the spacing consistent and make the layout easier to manage across different screen sizes. I would also test the layout on mobile, tablet, and desktop screens to make sure everything remains usable and easy to navigate.
+
+---
+
+## Class 07 - CSS Grid & Layout Complexity
+
+### Theory
+
+#### 1. When to Choose CSS Grid Over Flexbox
+
+I would choose CSS Grid when working with layouts that have both rows and columns. Flexbox works best in one direction at a time, while Grid is better for full page layouts.
+
+Some examples are:
+
+1. A dashboard with KPI cards.
+2. A product dashboard featuring customers' testimonials in cards.
+3. A photo gallery where items need to be arranged in rows and columns.
+
+#### 2. grid-template-areas vs grid-template-columns
+
+I would use `grid-template-columns` when I only need to define column sizes.
+
+Example:
+
+```css
+grid-template-columns: 1fr 2fr 1fr;
+```
+
+I would use `grid-template-areas` when I want to visually describe the layout. I think grid-template-areas makes complex layouts easier to understand because the layout can be seen directly in the code as shown in the example code below.
+
+Example:
+
+```css
+grid-template-areas:
+  "card1 card1 card2"
+  "card3 card4 card6"
+  "card3 card5 card6";
+```
+
+card1 spans 2 columns 1 row
+card2, card4, and card5 span 1 row 1 column
+card3 and card6 span 2 rows 1 column
