@@ -458,3 +458,41 @@ Featured Card: this has larger width and has a stronger border thickness so it s
   Featured State
 </div>
 ```
+
+---
+
+## Class 09 - Advanced Tailwind & Responsive Design
+
+### Theory
+
+#### 1. Tailwind Breakpoint System
+
+Tailwind uses breakpoints to apply styles at different screen sizes.
+
+For example:
+
+```html
+<div class="text-[12px] md:text-[20px]">Hello World</div>
+```
+
+The text will have a size of 12 pixels on mobile screens and 20 pixels on medium screens and above.
+
+The `md:` prefix means the style starts applying when the screen reaches the medium breakpoint.
+
+To create a custom breakpoint for 1200px, I can add it in the Tailwind configuration to override the default breakpoint configuration:
+
+```js
+module.exports = {
+  theme: {
+    extend: {
+      screens: {
+        xl: "1200px",
+      },
+    },
+  },
+};
+```
+
+#### 2. Arbitrary Values
+
+Arbitrary values allow us to use custom values directly inside a class. I would use arbitrary values when I need a specific value only once. If the same value will be used many times, I think it is better to add it to the Tailwind configuration so the project stays organized.
