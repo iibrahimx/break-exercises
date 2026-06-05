@@ -324,3 +324,75 @@ grid-template-areas:
 card1 spans 2 columns 1 row
 card2, card4, and card5 span 1 row 1 column
 card3 and card6 span 2 rows 1 column
+
+### Engineering Thinking
+
+#### 1. Magazine Layout
+
+**ASCII Sketch**
+
+```text
++------------------------------------------------------+
+|                   HERO ARTICLE                       |
++------------------------------------------------------+
+
++---------------------------+--------------------------+
+|          WIDE ARTICLE 2   | WIDE ARTICLE 3           |
++---------------------------+--------------------------+
++------------------------------------------------------+
+|                   WIDE ARTICLE                       |
++------------------------------------------------------+
+
++-----------------+-----------------+------------------+
+| SMALL ARTICLE 1 | SMALL ARTICLE 2 | SMALL ARTICLE 3  |
++-----------------+-----------------+------------------+
+```
+
+**Grid Layout**
+
+```css
+.container {
+  display: grid;
+  gap: 1rem;
+
+  grid-template-columns: repeat(3, 1fr);
+
+  grid-template-areas:
+    "hero hero hero"
+    "a2    a2   a3"
+    "wide wide wide"
+    "s1    s2   s3";
+}
+
+.hero {
+  grid-area: hero;
+}
+
+.article-2 {
+  grid-area: a2;
+}
+
+.article-3 {
+  grid-area: a3;
+}
+
+.wide {
+  grid-area: wide;
+}
+
+.small-1 {
+  grid-area: s1;
+}
+
+.small-2 {
+  grid-area: s2;
+}
+
+.small-3 {
+  grid-area: s3;
+}
+```
+
+I used `fr` units because they divide available space evenly and make the layout responsive.
+
+#### 2. Responsive Dashboard Layout
