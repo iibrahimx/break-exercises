@@ -230,3 +230,34 @@ Content-box is the default box model where padding and borders increase the fina
 Border-box includes the padding and border inside the width and height that you set.
 
 I prefer border-box because it makes layouts easier to manage and more predictable.
+
+---
+
+## Class 06 - Flexbox Mastery
+
+### Theory
+
+#### 1. Difference Between flex-grow, flex-shrink, and flex-basis
+
+I think of Flexbox like sharing space in a room. For example, if three people are sharing a room, flex-basis is the space they start with, flex-grow is how much extra space they can get, and flex-shrink is how much space they can give up when the room becomes crowded.
+
+- `flex-grow` decides how much extra space an item can take when there is free space available.
+- `flex-shrink` decides how much an item can reduce in size when there is not enough space.
+- `flex-basis` is the starting size before grow or shrink happens.
+
+#### 2. When align-items: stretch Does Not Work
+
+`align-items: stretch` only works when the item does not already have a fixed height. In this example below, the item already has a height of 100px, so it will not stretch to fill the container. The fixed height prevents the stretching behavior.
+
+Example:
+
+```css
+.container {
+  display: flex;
+  align-items: stretch;
+}
+
+.item {
+  height: 100px;
+}
+```
