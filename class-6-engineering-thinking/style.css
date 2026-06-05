@@ -1,0 +1,22 @@
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+.logo,
+button {
+  flex: 1;
+}
+
+.nav-links {
+  flex: 2;
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  list-style: none;
+}
+
+button {
+  display: flex;
+  justify-content: flex-end;
+}

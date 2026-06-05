@@ -261,3 +261,25 @@ Example:
   height: 100px;
 }
 ```
+
+### Engineering Thinking
+
+#### 1. Navigation Bar Layout
+
+Referencing the screenshot below, my thinking was to divide the navbar into three sections. The logo stays on the left, the links stay in the middle, and the sign-in button stays on the right. Using flex values helps keep the links centered even if the logo or button changes width.
+
+**HTML Structure**
+
+![How the browser works](./images/class6-nav-layout.png)
+
+**Flexbox Solution**
+
+![How the browser works](./images/class6-flexbox-solution.png)
+
+#### 2. Instagram Header Using Flexbox
+
+To build the Instagram header, I would place all navigation items inside a Flexbox container.
+
+On large screens, all menu items would be displayed in a row. On smaller screens, I would hide the menu items and show a hamburger menu instead.
+
+Flexbox would help keep the spacing consistent and make the layout easier to manage across different screen sizes. I would also test the layout on mobile, tablet, and desktop screens to make sure everything remains usable and easy to navigate.
