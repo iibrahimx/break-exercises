@@ -424,3 +424,37 @@ One can simply use these tailwind utility classes to achieve the same results, i
 JIT means Just-In-Time compiler.
 
 It generates only the CSS classes that are actually used in the project. This helps keep the final CSS file smaller. Without JIT, many unused styles might be included. With JIT, only the classes being used are generated and in turn reduces file size.
+
+### Product Thinking
+
+#### 1. Responding to a Teammate Who Says Tailwind Makes HTML Ugly
+
+Well, it's understandable that Tailwind makes HTML look crowded because there can be many classes on a single element, but then again, the benefits far outweighs this particular drawback as it keeps styles close to the element being styled, which means one do not have to switch between HTML and CSS files constantly. And also most importantly, it also helps teams stay consistent because everyone uses the same utility classes instead of creating different custom styles for similar elements.
+
+### Engineering Thinking
+
+#### 1. Card Component in Different States
+
+Default Card
+
+```html
+<div class="border rounded-lg p-6">Default State</div>
+```
+
+Hover Card: this lifts slightly and adds a shadow when the mouse moves (hovers) over it
+
+```html
+<div
+  class="border rounded-lg p-6 hover:shadow-lg hover:-translate-y-1 transition"
+>
+  Hover State
+</div>
+```
+
+Featured Card: this has larger width and has a stronger border thickness so it stands out from the others
+
+```html
+<div class="border-2 border-[#FAFAF9] w-2xl rounded-xl p-6 shadow-lg">
+  Featured State
+</div>
+```
