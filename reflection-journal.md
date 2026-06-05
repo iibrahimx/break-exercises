@@ -496,3 +496,44 @@ module.exports = {
 #### 2. Arbitrary Values
 
 Arbitrary values allow us to use custom values directly inside a class. I would use arbitrary values when I need a specific value only once. If the same value will be used many times, I think it is better to add it to the Tailwind configuration so the project stays organized.
+
+### Engineering Best Practice
+
+#### 1. Tailwind Dark Mode Configuration
+
+For latest version of Tailwind, Tailwind v4, the `@theme` and `@variant` dark syntax below handles everything natively.
+
+Example configuration:
+
+```css
+@theme {
+  /* Light mode variables by default */
+  --color-bg: #ffffff;
+  --color-text: #000000;
+
+  /* Dark mode variables overrides */
+  @variant dark {
+    --color-bg: #0f172a;
+    --color-text: #fafaf9;
+  }
+}
+```
+
+And then I'll use them as such
+
+Example usage:
+
+```html
+<div class="bg-white text-black dark:bg-black dark:text-white">
+  Example Usage
+</div>
+```
+
+#### 2. Responsive Startup Landing Page
+
+Using Tailwind, and knowing it defaults to a mobile first approach, my breakpoint strategy will be
+
+- Mobile First: Default styles from 0px and up
+- `sm:` mobile (large phones) < 640px from 640px and up
+- `md:` tablets from 768px and up
+- `lg:` desktop from 1024px and up
