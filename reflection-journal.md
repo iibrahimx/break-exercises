@@ -556,3 +556,14 @@ console.log(name);
 
 let name = "Ibrahim";
 ```
+
+#### 3. Memory Heap vs Stack
+
+### Product Thinking
+
+#### 1. Variables for a Calculator App
+
+- For the display value, I would use `let` because the value changes whenever the user presses a number or operation button.
+- For the operator, I would also use `let` because it changes depending on whether the user chooses addition, subtraction, multiplication, or division.
+- For the previous operand, I would use `let` as well because the value changes during calculations.
+- I would only use `const` for values that should never change during the life of the application.
