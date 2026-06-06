@@ -702,3 +702,19 @@ function increaseCount() {
 - A higher-order function is a function that accepts another function or returns a function. eg. `map()`, `filter()`, `reduce()` etc.
 
 They are fundamental in Javacript because they help us write reusable and flexible code.
+
+### Product Thinking
+
+#### 1. Pure Functions for a Calculator App
+
+Some pure functions I would create are:
+
+1. `add(a, b)` - adds two numbers (takes two arguments).
+2. `subtract(a, b)` - subtracts one number from another (takes two arguments).
+3. `multiply(a, b)` - multiplies two numbers (takes two arguments).
+4. `divide(a, b)` - divides two numbers (takes two arguments).
+5. `square(number)` - returns the square of a number (takes one argument).
+
+Making them pure makes them easier to test and debug in case of any issues.
+
+### Engineering Thinking
