@@ -640,3 +640,65 @@ Example:
 
 // In this case, `??` is the better choice because `0` is a valid value.
 ```
+
+---
+
+## Class 12 - Functions & Functional Programming
+
+### Theory
+
+#### 1. Function Declaration vs Function Expression
+
+A function declaration is created using the function keyword with a name while a function expression is when a function is stored inside a variable. eg.
+
+```js
+// Function declaration
+function greet() {
+  return "Hello World";
+}
+
+// Function expression
+const greet = function () {
+  return "Hello World";
+};
+```
+
+Hoisting behaves differently between them because function declarations can be called before they appear in the code, while function expressions cannot simply because the function declaration is hoisted.
+
+```js
+// Call greet function before declaration
+greet();
+
+function greet() {
+  console.log("Hello World");
+}
+```
+
+#### 2. What is a Pure Function?
+
+A pure function always gives the same output when given the same input. Developres value functions like this because it's output is simply what was expected and defined. If I pass in 2 and 3 in the function below, it will always return 5.
+
+Example:
+
+```js
+function add(a, b) {
+  return a + b;
+}
+```
+
+An example of a function that is not pure is shown below. The function is mot pure because it changes a variable outside itself, so the result depends on something outside the function:
+
+```js
+let count = 0;
+
+function increaseCount() {
+  count++;
+}
+```
+
+#### 3. Callbacks and Higher-Order Functions
+
+- A callback is a function passed into another function.
+- A higher-order function is a function that accepts another function or returns a function. eg. `map()`, `filter()`, `reduce()` etc.
+
+They are fundamental in Javacript because they help us write reusable and flexible code.
