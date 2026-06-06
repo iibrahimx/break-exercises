@@ -567,3 +567,76 @@ let name = "Ibrahim";
 - For the operator, I would also use `let` because it changes depending on whether the user chooses addition, subtraction, multiplication, or division.
 - For the previous operand, I would use `let` as well because the value changes during calculations.
 - I would only use `const` for values that should never change during the life of the application.
+
+---
+
+## Class 11 - Control Flow & Comparison
+
+### Theory
+
+#### 1. Difference Between == and ===
+
+The `==` operator checks if two values are equal after trying to convert their types while the `===` operator checks both the value and the type.
+
+Example:
+
+```js
+5 == "5"; // returns true
+
+5 === "5"; // returns false
+```
+
+Using `==` can sometimes cause unexpected results because JavaScript automatically converts values, which I believe is known as type coercion.
+
+For example:
+
+```js
+0 == false; // true
+```
+
+Even though one is a number and the other is a boolean. Because of this, I prefer using `===` since it is more predictable.
+
+#### 2. Optional Chaining (?.)
+
+Optional chaining helps prevent errors when trying to access properties that may not exist. One downside is that overusing it can hide problems. If data is missing when it should exist, optional chaining may silently return `undefined` instead of helping us notice the issue.
+
+Examples:
+
+- `user?.name`
+- `user?.address?.city`
+- `user?.preferences?.theme`
+
+#### 3. Nullish Coalescing (??)
+
+The nullish coalescing operator provides a default value when the value on the left is `null` or `undefined`.
+
+Example:
+
+```js
+let username = null;
+
+console.log(username ?? "Guest");
+
+// Output:
+// Guest
+```
+
+It is different from `||` because `||` treats values like `0`, `false`, and empty strings as false.
+
+Example:
+
+```js
+0 || 10;
+
+// returns:
+// 10
+
+// But:
+
+0 ?? 10;
+
+// returns:
+// 0
+
+// In this case, `??` is the better choice because `0` is a valid value.
+```
