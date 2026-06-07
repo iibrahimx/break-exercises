@@ -43,3 +43,29 @@ Contains:
 
 - myDebounce()
 - myThrottle()
+
+## Running The Files
+
+Calculator
+
+```bash
+node calculator.js
+```
+
+Validation Library
+
+```bash
+node validators.js
+```
+
+Array Utilities
+
+```bash
+node array-utils.js
+```
+
+Debounce & Throttle
+
+```bash
+node debounce-throttle.js
+```
