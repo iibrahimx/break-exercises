@@ -680,6 +680,81 @@ Example:
 // In this case, `??` is the better choice because `0` is a valid value.
 ```
 
+```js
+// Input validation function
+function validateUser(user) {
+  const errors = [];
+
+  if (!user.name || typeof user.name !== "string") {
+    errors.push("Name is required");
+  }
+
+  if (typeof user.age !== "number" || user.age < 18 || user.age > 99) {
+    errors.push("Age must be between 18 and 99");
+  }
+
+  if (!user.email || !user.email.includes("@")) {
+    errors.push("Invalid email");
+  }
+
+  if (user.preferences && typeof user.preferences !== "object") {
+    errors.push("Preferences must be an object");
+  }
+
+  const theme = user.preferences?.theme ?? "light";
+
+  return {
+    valid: errors.length === 0,
+    errors,
+    theme,
+  };
+}
+```
+
+```js
+// Grade calculator
+function calculateGrade(scores, weights, passingGrade) {
+  if (scores.length === 0 || scores.length !== weights.length) {
+    return "Invalid input";
+  }
+
+  let weightedTotal = 0;
+
+  for (let i = 0; i < scores.length; i++) {
+    weightedTotal += scores[i] * (weights[i] / 100);
+  }
+
+  const average = weightedTotal;
+
+  const status = average >= passingGrade ? "Pass" : "Fail";
+
+  const distinction = average >= 90 ? "Yes" : "No";
+
+  let letterGrade;
+
+  if (average >= 90) {
+    letterGrade = "A";
+  } else if (average >= 80) {
+    letterGrade = "B";
+  } else if (average >= 70) {
+    letterGrade = "C";
+  } else if (average >= 60) {
+    letterGrade = "D";
+  } else {
+    letterGrade = "F";
+  }
+
+  return {
+    average,
+    status,
+    letterGrade,
+    distinction,
+  };
+}
+
+console.log(calculateGrade([80, 90, 100], [30, 30, 40], 50));
+```
+
 ---
 
 ## Class 12 - Functions & Functional Programming
@@ -760,9 +835,15 @@ Making them pure makes them easier to test and debug in case of any issues.
 
 #### 1. Compose Function
 
-The implementation can be found in:
+The implementation for the compose function can be found in:
 
-- `class-12-hof-callbacks/compose-function.js`
+```js
+function compose(f, g, h) {
+  return function (x) {
+    return f(g(h(x)));
+  };
+}
+```
 
 A compose function combines multiple functions into one function. The expression: `compose(f, g, h)(x)` means: `f(g(h(x)))` that is the functions are executed from right to left.
 
@@ -804,7 +885,13 @@ Final result:
 
 The `reduceRight()`, automatically processes an array from right to left. The implementation can be found in:
 
-- `class-12-hof-callbacks/compose-reduceright.js`
+```js
+function compose(...functions) {
+  return function (x) {
+    return functions.reduceRight((result, fn) => fn(result), x);
+  };
+}
+```
 
 ---
 
@@ -818,7 +905,7 @@ I would use an array when I need to store a list of similar items. eg.
 
 `const fruits = ["Apple", "Banana", "Orange"]`
 
-An object however is better when I want to store related information using keys and values. eg.
+I would use an object however when I want to store something with properties using keys and values. eg.
 
 ```js
 const user = {
@@ -828,7 +915,7 @@ const user = {
 };
 ```
 
-An object is better in this case, because each value has a clear meaning.
+Arrays are better for lists, while objects are better for storing information about a specific thing.
 
 #### 2. Destructuring Nested Objects
 
@@ -853,20 +940,18 @@ const {
 } = response;
 ```
 
-After destructuring:
+After destructuring I can use:
 
 ```js
 console.log(name);
 console.log(email);
 ```
 
-This makes it easier to work with deeply nested data.
+Instead of writing:
 
-### Engineering Thinking
+```js
+response.user.profile.name;
+response.user.profile.email;
+```
 
-The solutions for this section can be found in:
-
-- `class-13-data-structures/orders-analysis.js`
-- `class-13-data-structures/product-filter.js`
-
-I used arrays, objects, filter, map, reduce, and sort to solve the exercises. These methods made it easier to work with collections of data without writing unnecessary code.
+This makes the code cleaner and easier to read.
