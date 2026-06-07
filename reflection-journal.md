@@ -760,13 +760,9 @@ Making them pure makes them easier to test and debug in case of any issues.
 
 #### 1. Compose Function
 
-```js
-function compose(f, g, h) {
-  return function (x) {
-    return f(g(h(x)));
-  };
-}
-```
+The implementation can be found in:
+
+- `class-12-hof-callbacks/compose-function.js`
 
 A compose function combines multiple functions into one function. The expression: `compose(f, g, h)(x)` means: `f(g(h(x)))` that is the functions are executed from right to left.
 
@@ -806,12 +802,6 @@ Final result:
 
 #### 2. Using reduceRight
 
-The `reduceRight()`, which automatically processes an array from right to left.
+The `reduceRight()`, automatically processes an array from right to left. The implementation can be found in:
 
-```javascript
-function compose(...functions) {
-  return function (x) {
-    return functions.reduceRight((result, fn) => fn(result), x);
-  };
-}
-```
+- `class-12-hof-callbacks/compose-reduceright.js`

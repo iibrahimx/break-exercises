@@ -1,8 +1,19 @@
-# Class 10-11 functions
+# Class 10-11 Functions
 
-This folder contains functions from the break exercises of class 10-11
+This folder contains JavaScript solutions for the Class 10 and Class 11 engineering exercises.
 
-## Class 11
+### input-validation-function.js
 
-- Input validation function
-- Grade calculator
+Validates:
+
+- Name
+- Age
+- Email
+- Preferences object
+
+### grade-calculator.js
+
+Calculates:
+
+- Weighted average
+- Pass or fail status
