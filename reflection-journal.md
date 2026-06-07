@@ -805,3 +805,68 @@ Final result:
 The `reduceRight()`, automatically processes an array from right to left. The implementation can be found in:
 
 - `class-12-hof-callbacks/compose-reduceright.js`
+
+---
+
+## Class 13 - Data Structures: Arrays & Objects
+
+### Theory
+
+#### 1. When to Use an Array vs an Object
+
+I would use an array when I need to store a list of similar items. eg.
+
+`const fruits = ["Apple", "Banana", "Orange"]`
+
+An object however is better when I want to store related information using keys and values. eg.
+
+```js
+const user = {
+  name: "Ibrahim",
+  location: "Nigeria",
+  role: "Student",
+};
+```
+
+An object is better in this case, because each value has a clear meaning.
+
+#### 2. Destructuring Nested Objects
+
+Destructuring allows us to extract values from objects and store them in variables.
+
+Example:
+
+```js
+const response = {
+  user: {
+    profile: {
+      name: "Ibrahim",
+      email: "ibrahim@example.com",
+    },
+  },
+};
+
+const {
+  user: {
+    profile: { name, email },
+  },
+} = response;
+```
+
+After destructuring:
+
+```js
+console.log(name);
+console.log(email);
+```
+
+This makes it easier to work with deeply nested data.
+
+### Engineering Thinking
+
+The solutions for this section can be found in:
+
+- `class-13-data-structures/orders-analysis.js`
+- `class-13-data-structures/product-filter.js`
+
+I used arrays, objects, filter, map, reduce, and sort to solve the exercises. These methods made it easier to work with collections of data without writing unnecessary code.
