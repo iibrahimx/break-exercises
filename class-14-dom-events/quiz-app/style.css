@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  padding: 2rem;
+}
+
+.container {
+  max-width: 700px;
+  margin: auto;
+}
+
+#progress-container {
+  height: 20px;
+  background: #ddd;
+  margin-bottom: 1rem;
+  border-radius: 20px;
+}
+
+#progress-bar {
+  height: 100%;
+  width: 0%;
+  background: green;
+}
