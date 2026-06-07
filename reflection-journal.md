@@ -559,6 +559,45 @@ let name = "Ibrahim";
 
 #### 3. Memory Heap vs Stack
 
+# Memory Heap vs Stack
+
+### Code
+
+```javascript
+let name = "Sarah";
+
+let age = 22;
+
+let scores = [90, 85, 88];
+
+function greet(person) {
+  return "Hello, " + person;
+}
+
+let result = greet(name);
+```
+
+### Memory Diagram
+
+```text
+STACK
+------------------------------------------------
+name      -> "Sarah"
+age       -> 22
+scores    -> Ref A
+greet     -> Function
+result    -> "Hello, Sarah"
+------------------------------------------------
+
+
+HEAP
+------------------------------------------------
+Ref A -> [90, 85, 88]
+------------------------------------------------
+```
+
+JavaScript stores primitive values such as `strings`, `numbers`, `booleans`, and `references` directly in the `Stack` while more complex data types such as arrays and objects are stored in the `Heap`. Functions are also reference types, so the variable `greet` holds a reference to the function.
+
 ### Product Thinking
 
 #### 1. Variables for a Calculator App
@@ -718,3 +757,61 @@ Some pure functions I would create are:
 Making them pure makes them easier to test and debug in case of any issues.
 
 ### Engineering Thinking
+
+#### 1. Compose Function
+
+```js
+function compose(f, g, h) {
+  return function (x) {
+    return f(g(h(x)));
+  };
+}
+```
+
+A compose function combines multiple functions into one function. The expression: `compose(f, g, h)(x)` means: `f(g(h(x)))` that is the functions are executed from right to left.
+
+Using the example below:
+
+```js
+function add2(x) {
+  return x + 2;
+}
+
+function multiply3(x) {
+  return x * 3;
+}
+
+function subtract1(x) {
+  return x - 1;
+}
+
+const result = compose(add2, multiply3, subtract1);
+
+console.log(result(5));
+
+/*
+ Output explanation
+
+x = 5
+
+subtract1(5) = 4
+multiply3(4) = 12
+add2(12) = 14
+
+Final result:
+
+14
+*/
+```
+
+#### 2. Using reduceRight
+
+The `reduceRight()`, which automatically processes an array from right to left.
+
+```javascript
+function compose(...functions) {
+  return function (x) {
+    return functions.reduceRight((result, fn) => fn(result), x);
+  };
+}
+```
