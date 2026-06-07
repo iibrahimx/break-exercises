@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Table</title>
+
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body
+    class="bg-stone-100 min-h-screen p-6"
+    style="font-family: &quot;Manrope&quot;, sans-serif"
+  >
+    <div class="max-w-6xl mx-auto">
+      <h1 class="text-4xl font-extrabold text-stone-800 mb-6">
+        Employee Table
+      </h1>
+
+      <input
+        id="search"
+        type="text"
+        placeholder="Search employee..."
+        class="w-full border border-stone-300 rounded-xl p-3 mb-6 bg-white"
+      />
+
+      <div class="bg-white rounded-2xl shadow overflow-hidden">
+        <table class="w-full">
+          <thead class="bg-stone-200">
+            <tr>
+              <th class="p-4 cursor-pointer text-left" data-column="id">ID</th>
+
+              <th class="p-4 cursor-pointer text-left" data-column="name">
+                Name
+              </th>
+
+              <th class="p-4 cursor-pointer text-left" data-column="department">
+                Department
+              </th>
+
+              <th class="p-4 cursor-pointer text-left" data-column="salary">
+                Salary
+              </th>
+            </tr>
+          </thead>
+
+          <tbody id="table-body"></tbody>
+        </table>
+      </div>
+
+      <div class="flex justify-center gap-4 mt-6">
+        <button
+          id="prev-btn"
+          class="bg-emerald-700 text-white px-4 py-2 rounded-lg cursor-pointer"
+        >
+          Previous
+        </button>
+
+        <span id="page-info" class="flex items-center font-medium"> </span>
+
+        <button
+          id="next-btn"
+          class="bg-emerald-700 text-white px-4 py-2 rounded-lg cursor-pointer"
+        >
+          Next
+        </button>
+      </div>
+    </div>
+
+    <script src="script.js"></script>
+  </body>
+</html>
