@@ -1168,3 +1168,39 @@ One simple solution is:
 - When User B tries to save the edit, show a message: "This todo was deleted by another user."
 
 Another solution is to lock a todo while it is being edited so other users cannot modify or delete it until editing is finished. This helps keep the data consistent for all users.
+
+---
+
+## Class 15 - Personal Dashboard Project
+
+### Personal Reflection
+
+#### 1. What Was the Hardest Part?
+
+The hardest part for me was connecting all the different features together and making sure they worked correctly. Sometimes one small change would affect another part of the project and I had to spend time figuring out what went wrong and also refactoring my teammates project layout and some part of the codes to structure it well.
+
+#### 2. How Did You Get Unstuck?
+
+When I got stuck, I usually started by checking the browser console and reading the error messages. I also used Google searches and AI. What helped me the most was breaking the problem into smaller pieces. Once I focused on one issue at a time, the solution usually became easier to find.
+
+#### 3. Code Organisation
+
+I think my code organisation was okay but there is still room for improvement as I made a lot of mistakes along the way. If I started again, I would separate some of my functions better and group related logic together. This would make the project easier to read and maintain.
+
+#### 4. localStorage
+
+I used localStorage for information that should remain available after refreshing the page. I used it there because it was simple and built into the browser. Other options I could have used include a database, browser storage solutions such as IndexedDB, or an external backend API.
+
+### Engineering Best Practice
+
+#### 1. Three Things I Did Well
+
+1. I used meaningful variable names in most places which made the code easier to understand.
+2. I broke some logic into functions instead of writing everything in one place.
+3. I used localStorage to improve the user experience by keeping data after page refreshes.
+
+#### 2. Three Things I Would Improve
+
+1. Some functions became longer than necessary and could be split into smaller functions.
+2. I could improve error handling in places where user input is involved.
+3. I would improve code organisation by grouping related functions and logic into separate files if the project became larger.
