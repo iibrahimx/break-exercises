@@ -1050,3 +1050,47 @@ function searchProducts(products, keyword) {
 ```
 
 I used `filter()` because it returns only the products that match the condition I am looking for.
+
+---
+
+## Class 14 - DOM Manipulation & Events
+
+### Theory
+
+#### 1. Event Bubbling vs Event Capturing
+
+Event bubbling happens when an event starts from the target element and moves upward through its parent elements. For example, if I click a button inside a div, the click happens on the button first and then moves up to the div. Event capturing on the other hand is the opposite. The event starts from the outer parent and moves down to the target element.
+
+Most of the time, I would use event bubbling because it is the default behavior and works well for event delegation. I would only use event capturing if I need a parent element to react before the child element.
+
+#### 2. What is Event Delegation?
+
+Event delegation simply means attaching one event listener to a parent element instead of attaching listeners to every child element. For example, if a todo list contains 100 items, adding 100 event listeners is unnecessary. Adding one as shown below is better because one event listener can handle all current and future list items. eg.
+
+```js
+todoList.addEventListener("click", function (event) {
+  if (event.target.tagName === "LI") {
+    console.log("Todo clicked");
+  }
+});
+```
+
+#### 3. innerHTML vs createElement/textContent
+
+The biggest security concern with `innerHTML` is XSS (Cross-Site Scripting), that is if a user enters malicious code, it could be injected into the page.
+
+Example:
+
+```js
+list.innerHTML = "<li>" + userInput + "</li>";
+```
+
+Using `createElement()` and `textContent()` is safer because the browser treats the input as text instead of HTML.
+
+Example:
+
+```js
+const li = document.createElement("li");
+
+li.textContent = userInput;
+```
