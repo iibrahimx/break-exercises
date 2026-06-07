@@ -955,3 +955,98 @@ response.user.profile.email;
 ```
 
 This makes the code cleaner and easier to read.
+
+### Engineering Thinking
+
+#### 1. Order Analysis
+
+```js
+const orders = [
+  {
+    id: 1,
+    customer: "Alice",
+    items: ["Pizza", "Salad"],
+    total: 45,
+    status: "delivered",
+  },
+  {
+    id: 2,
+    customer: "Bob",
+    items: ["Burger"],
+    total: 15,
+    status: "pending",
+  },
+  {
+    id: 3,
+    customer: "Alice",
+    items: ["Burger", "Fries"],
+    total: 20,
+    status: "delivered",
+  },
+];
+
+// Find all orders by Alice
+const aliceOrders = orders.filter((order) => order.customer === "Alice");
+
+// Calculate total spent by Alice
+const totalSpent = aliceOrders.reduce((sum, order) => sum + order.total, 0);
+
+// Get all unique food items
+let allItems = [];
+
+orders.forEach((order) => {
+  allItems.push(...order.items);
+});
+
+const uniqueItems = [...new Set(allItems)];
+
+// Group orders by status
+const groupedOrders = {
+  delivered: [],
+  pending: [],
+};
+
+orders.forEach((order) => {
+  groupedOrders[order.status].push(order);
+});
+```
+
+I used `filter()` to get Alice's orders, `reduce()` to calculate the total amount spent, and `forEach()` to collect all food items before removing duplicates.
+
+#### 2. Product Search and Filter
+
+```js
+const products = [
+  {
+    name: "Laptop",
+    category: "Electronics",
+    price: 500000,
+  },
+  {
+    name: "Phone",
+    category: "Electronics",
+    price: 250000,
+  },
+  {
+    name: "Chair",
+    category: "Furniture",
+    price: 45000,
+  },
+];
+
+function filterByCategory(products, category) {
+  return products.filter((product) => product.category === category);
+}
+
+function filterByPrice(products, maxPrice) {
+  return products.filter((product) => product.price <= maxPrice);
+}
+
+function searchProducts(products, keyword) {
+  return products.filter((product) =>
+    product.name.toLowerCase().includes(keyword.toLowerCase()),
+  );
+}
+```
+
+I used `filter()` because it returns only the products that match the condition I am looking for.
