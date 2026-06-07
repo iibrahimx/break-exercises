@@ -57,17 +57,20 @@ const questions = [
 ];
 
 const questionElement = document.getElementById("question");
-
 const answersElement = document.getElementById("answers");
-
 const nextButton = document.getElementById("next-btn");
-
 const progressText = document.getElementById("progress-text");
-
 const progressBar = document.getElementById("progress-bar");
+const quizContainer = document.getElementById("quiz-container");
+const resultContainer = document.getElementById("result-container");
+const scoreElement = document.getElementById("score");
+const bestScoreElement = document.getElementById("best-score");
+const reviewList = document.getElementById("review-list");
+const restartButton = document.getElementById("restart-btn");
 
 let currentQuestion = 0;
 let score = 0;
+let userAnswers = [];
 let selectedAnswer = null;
 nextButton.disabled = true;
 
@@ -110,6 +113,61 @@ function showQuestion() {
   });
 }
 
+function showResults() {
+  quizContainer.classList.add("hidden");
+
+  resultContainer.classList.remove("hidden");
+
+  scoreElement.textContent = `Your Score: ${score}/${questions.length}`;
+
+  const bestScore = Number(localStorage.getItem("bestScore")) || 0;
+
+  if (score > bestScore) {
+    localStorage.setItem("bestScore", score);
+  }
+
+  bestScoreElement.textContent = `Best Score: ${localStorage.getItem(
+    "bestScore",
+  )}/${questions.length}`;
+
+  reviewList.innerHTML = "";
+
+  userAnswers.forEach((item) => {
+    const reviewItem = document.createElement("div");
+
+    const isCorrect = item.selected === item.correct;
+
+    reviewItem.className = `
+      p-4
+      rounded-xl
+      border
+      ${
+        isCorrect
+          ? "border-emerald-500 bg-emerald-50"
+          : "border-red-500 bg-red-50"
+      }
+      `;
+
+    reviewItem.innerHTML = `
+      <p class="font-semibold">
+        ${item.question}
+      </p>
+
+      <p>
+        Your Answer:
+        ${item.selected}
+      </p>
+
+      <p>
+        Correct Answer:
+        ${item.correct}
+      </p>
+    `;
+
+    reviewList.appendChild(reviewItem);
+  });
+}
+
 nextButton.addEventListener("click", () => {
   if (!selectedAnswer) {
     alert("Please select an answer first.");
@@ -120,18 +178,31 @@ nextButton.addEventListener("click", () => {
     score++;
   }
 
+  userAnswers.push({
+    question: questions[currentQuestion].question,
+    selected: selectedAnswer,
+    correct: questions[currentQuestion].correct,
+  });
+
   currentQuestion++;
   selectedAnswer = null;
 
   if (currentQuestion >= questions.length) {
-    questionElement.textContent = `Quiz Complete! Score: ${score}/${questions.length}`;
-
-    answersElement.innerHTML = "";
-
-    nextButton.disabled = true;
-
+    showResults();
     return;
   }
+
+  showQuestion();
+});
+
+restartButton.addEventListener("click", () => {
+  currentQuestion = 0;
+  score = 0;
+  userAnswers = [];
+
+  resultContainer.classList.add("hidden");
+
+  quizContainer.classList.remove("hidden");
 
   showQuestion();
 });
