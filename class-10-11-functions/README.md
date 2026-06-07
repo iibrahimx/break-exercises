@@ -28,22 +28,6 @@ Contains validation functions for:
 - URL
 - Date (YYYY-MM-DD)
 
-### array-utils.js
-
-Contains custom implementations of:
-
-- myMap()
-- myFilter()
-- myReduce()
-- myFlat()
-
-### debounce-throttle.js
-
-Contains:
-
-- myDebounce()
-- myThrottle()
-
 ## Running The Files
 
 Calculator
@@ -56,16 +40,4 @@ Validation Library
 
 ```bash
 node validators.js
-```
-
-Array Utilities
-
-```bash
-node array-utils.js
-```
-
-Debounce & Throttle
-
-```bash
-node debounce-throttle.js
 ```
