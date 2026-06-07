@@ -1094,3 +1094,77 @@ const li = document.createElement("li");
 
 li.textContent = userInput;
 ```
+
+### ⚙️ Engineering Thinking
+
+#### Build a Todo List
+
+The todo app should have:
+
+- An input field for entering a todo.
+- An "Add" button.
+- A list displaying all todos.
+- An "Edit" button for updating a todo.
+- A "Delete" button for removing a todo.
+- Todos stored in `localStorage` so they remain after refreshing the page.
+
+##### Handling Empty Input
+
+Before adding a todo, check if the input is empty:
+
+```js
+if (input.value.trim() === "") {
+  alert("Please enter a todo");
+  return;
+}
+```
+
+##### Handling XSS Attacks
+
+To prevent malicious code from being injected into the page, use `textContent` instead of `innerHTML`. This ensures any HTML or script tags are displayed as text rather than executed.
+
+```js
+const li = document.createElement("li");
+li.textContent = input.value;
+```
+
+##### Handling Very Long Text
+
+A maximum character limit can be set. This prevents extremely large todos from affecting the user interface.
+
+```js
+if (input.value.length > 200) {
+  alert("Todo is too long");
+  return;
+}
+```
+
+---
+
+### 🧠 Product Thinking
+
+#### Real-Time Collaboration
+
+If multiple users are working on the same todo list, changes should appear instantly for everyone.
+
+Examples of DOM updates:
+
+- When User A adds a todo, it appears immediately for User B.
+- When User A edits a todo, the updated text appears for User B.
+- When User A deletes a todo, it disappears for User B.
+
+#### Handling Conflicting Edits
+
+A conflict can happen when two users modify the same todo at the same time.
+
+Example:
+
+- User A deletes a todo.
+- User B is currently editing that same todo.
+
+One simple solution is:
+
+- The delete action takes priority.
+- When User B tries to save the edit, show a message: "This todo was deleted by another user."
+
+Another solution is to lock a todo while it is being edited so other users cannot modify or delete it until editing is finished. This helps keep the data consistent for all users.
