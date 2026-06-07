@@ -1204,3 +1204,106 @@ I used localStorage for information that should remain available after refreshin
 1. Some functions became longer than necessary and could be split into smaller functions.
 2. I could improve error handling in places where user input is involved.
 3. I would improve code organisation by grouping related functions and logic into separate files if the project became larger.
+
+---
+
+## Class 16 - The Event Loop & Promises
+
+### Theory
+
+#### 1. JavaScript Event Loop
+
+- The event loop helps JavaScript handle asynchronous tasks.
+- The call stack is where JavaScript executes code.
+- The task queue stores tasks such as setTimeout callbacks.
+- The microtask queue stores Promise callbacks.
+- The event loop keeps checking whether the call stack is empty. If it is empty, it runs tasks waiting in the queues.
+
+This matters because it helps JavaScript perform tasks without freezing the application.
+
+#### 2. Microtasks vs Macrotasks
+
+Microtasks usually come from Promises.
+
+Example:
+
+```js
+Promise.resolve().then(() => {
+  console.log("Microtask");
+});
+```
+
+Macrotasks usually come from setTimeout.
+
+Example:
+
+```js
+setTimeout(() => {
+  console.log("Macrotask");
+}, 0);
+```
+
+Promise callbacks run first because JavaScript processes the microtask queue before the task queue.
+
+#### 3. Timeline Question
+
+Given code:
+
+```js
+console.log("1");
+
+setTimeout(() => console.log("2"), 0);
+
+Promise.resolve().then(() => console.log("3"));
+
+console.log("4");
+```
+
+Output:
+
+```text
+1
+4
+3
+2
+```
+
+Reason:
+
+- 1 runs immediately.
+- 4 runs immediately.
+- Promise callback goes to the microtask queue.
+- setTimeout goes to the task queue.
+- Microtasks run before macrotasks.
+
+### Engineering Thinking
+
+#### 1. Async Operations
+
+```js
+operationA()
+  .then((resultA) => {
+    return Promise.all([operationB(resultA), operationC()]);
+  })
+  .then(([resultB, resultC]) => {
+    console.log(resultB);
+    console.log(resultC);
+  });
+```
+
+A runs first because B depends on it. After A finishes, B and C can run at the same time.
+
+#### 2. Pizza Delivery Tracker
+
+```js
+function pizzaTracker() {
+  return Promise.resolve()
+    .then(() => "Order Placed")
+    .then((status) => status + " → Prepared")
+    .then((status) => status + " → Baked")
+    .then((status) => status + " → Out for Delivery")
+    .then((status) => status + " → Delivered");
+}
+```
+
+A cancellation flag could be checked before each step. If something goes wrong, the Promise can reject with an error such as "Kitchen Fire".
